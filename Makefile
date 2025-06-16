@@ -1,6 +1,6 @@
 .PHONY: make-deploy
 
-make-deploy:
+deploy:
 	forge script script/BatchCallAndSponsor.s.sol:BatchCallAndSponsorScript \
 		--broadcast \
 		--rpc-url buildbear \
