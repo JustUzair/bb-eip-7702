@@ -33,6 +33,8 @@ contract BatchCallAndSponsorScript is Script {
     MockERC20 public token;
 
     function run() external {
+        console.log("Alice's Address:", ALICE_ADDRESS); // 0x1E594012762B6AA8515e0B0d0de3Df2DAbA4C776
+        console.log("Bob's Address:", BOB_ADDRESS); // 0x92F860dfF64E71025d9e8d798Aff126463e2F618
         // Start broadcasting transactions with Alice's private key.
         vm.startBroadcast(ALICE_PK);
 

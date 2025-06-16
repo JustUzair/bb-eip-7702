@@ -6,4 +6,4 @@ deploy:
 		--rpc-url buildbear \
 		--verify \
 		--verifier sourcify \
-		--verifier-url https://rpc.test.buildbear.io/verify/sourcify/server/pectra-test
+		--verifier-url https://rpc.test.buildbear.io/verify/sourcify/server/pectra-test-uzair
