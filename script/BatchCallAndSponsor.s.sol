@@ -84,12 +84,13 @@ contract BatchCallAndSponsorScript is Script {
         BatchCallAndSponsor.Call[] memory calls = new BatchCallAndSponsor.Call[](1);
         calls[0] = BatchCallAndSponsor.Call({to: random_receiver, value: 1 ether, data: ""});
 
-        // Bob attaches the signed delegation from Alice and broadcasts it.
-        vm.startBroadcast(BOB_PK);
+        vm.startBroadcast(ALICE_PK);
         // Alice signs a delegation allowing `implementation` to execute transactions on her behalf.
         Vm.SignedDelegation memory signedDelegation = vm.signDelegation(address(implementation), ALICE_PK);
         vm.attachDelegation(signedDelegation);
-
+        vm.stopBroadcast();
+        // Bob attaches the signed delegation from Alice and broadcasts it.
+        vm.startBroadcast(BOB_PK);
         // Verify that Alice's account now temporarily behaves as a smart contract.
         bytes memory code = address(ALICE_ADDRESS).code;
         require(code.length > 0, "no code written to Alice");

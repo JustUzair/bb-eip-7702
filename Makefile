@@ -1,9 +1,18 @@
 .PHONY: make-deploy
 
-deploy:
+deploy-sourcify:
 	forge script script/BatchCallAndSponsor.s.sol:BatchCallAndSponsorScript \
-		--broadcast \
+	 --rpc-url buildbear \
+	 --broadcast \
+	 --verifier sourcify \
+	 --verify \
+	 --verifier-url https://rpc.buildbear.io/verify/sourcify/server/YOUR_RPC_HERE \
+
+deploy-etherscan:
+	forge script script/BatchCallAndSponsor.s.sol:BatchCallAndSponsorScript \
 		--rpc-url buildbear \
+		--broadcast \
+		--verifier etherscan \
 		--verify \
-		--verifier sourcify \
-		--verifier-url https://rpc.test.buildbear.io/verify/sourcify/server/pectra-test-uzair
+		--etherscan-api-key "verifyContract" \
+		--verifier-url https://rpc.buildbear.io/verify/etherscan/YOUR_RPC_HERE \
